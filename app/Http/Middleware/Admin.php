@@ -16,8 +16,8 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-       if(!Auth::gurd('admin')->check()){
-        return redirect()->route('admin.login.form')->with('error', 'login first');
+       if(!Auth::guard('admin')->check()){
+        return redirect()->route('admin_login_form')->with('error', 'login first');
        }
        
         return $next($request);
