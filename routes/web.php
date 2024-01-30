@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,19 +21,21 @@ Route::prefix('admin')->group(function(){
     Route::post('login/owner',[AdminController::class, 'login'])->name('admin.login');
     Route::get('dashboard',[AdminController::class , 'dashboard'])->name('admin_dashboard')->middleware('admin');
 
+});
 
 
+//teacher
 
-
-
-
-
-
-
-
-
+Route::prefix('teacher')->group(function(){
+    Route::get('login',[TeacherController::class,'index'])->name('teacher_login_form');
+    Route::post('login/owner',[TeacherController::class, 'login'])->name('teacher.login');
+    Route::get('dashboard',[TeacherController::class , 'dashboard'])->name('teacher_dashboard')->middleware('teacher');
 
 });
+
+
+
+//********************* */
 
 
 Route::get('/', function () {
